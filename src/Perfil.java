@@ -14,4 +14,27 @@ public class Perfil {
         nomes[0] = nome;
         Paginas = new Pagina[1];
     }
+
+    String[] getAliases(){
+        return nomes;
+    }
+    int getNOfPages(){
+        return Paginas.length;
+    }
+    int getNOfMessages(){
+        int Messages=0;
+        for (Pagina i : Paginas){
+            Messages+=i.getNOfMessages();
+        }
+        return Messages;
+    }
+
+    void addAlias(String nome){
+        String[] tempNomes =new String[nomes.length+1];
+        for (int i=0;i!=nomes.length;i++){
+            tempNomes[i]=nomes[i];
+        }
+        tempNomes[nomes.length]= nome;
+        nomes=tempNomes;
+    }
 }

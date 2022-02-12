@@ -17,4 +17,12 @@ public class Pagina {
         tempMensagens[tempMensagens.length-1]= new Mensagem(id, texto);
         Mensagens = tempMensagens;
     }
+
+    int getNOfMessages(){
+        if (Mensagens==null) {
+            return 0;
+        }else{
+            return Mensagens.length;
+        }
+    }
 }
