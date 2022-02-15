@@ -1,6 +1,7 @@
 public class Pagina {
     Mensagem[] Mensagens;
     Ficheiro[] Fixeiros;
+    int id;
 
     Pagina(){}
 

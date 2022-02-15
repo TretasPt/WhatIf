@@ -5,6 +5,7 @@ import java.io.File;
 public class Ficheiro {
     String nome;
     Path path;
+    int id;
 
     Ficheiro(String nome, Path path){
         nome = this.nome;
@@ -15,9 +16,6 @@ public class Ficheiro {
         int size = 0;
         size += Utils.getSize(nome);
         size += Utils.getSize(path.toString());
-        // size += Tamanho do ficheiro.
-        // File ficheiro = new File(path.toFile(), path.toString());
-        // File ficheiro = new File(path);
         File ficheiro = path.toFile();
         size += ficheiro.getTotalSpace();
         return size;

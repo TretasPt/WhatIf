@@ -1,6 +1,7 @@
 public class Perfil {
     Pagina[] Paginas;
     String[] nomes;
+    int id;
 
     Perfil(String nome, int id, String texto){
         nomes = new String[1];

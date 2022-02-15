@@ -3,10 +3,17 @@ import java.util.Scanner;
 public class App {
     private static int maxId;
     private static Perfil[] perfies;
+    private static boolean keepGoing = true;
 
     public static void main(String[] args) {
-        operation();
-
+        System.out.println("Type 'help' for a list of commands.");
+        Scanner input = new Scanner(System.in);
+        while(keepGoing){
+            // operation();
+            String command = input.nextLine().toString().toLowerCase();
+            command(command);
+        }
+        input.close();
     }
 
     public static void lock(){
@@ -16,53 +23,23 @@ public class App {
         }
     }
 
-    public static void operation(){
-        Scanner input = new Scanner(System.in);
-        System.out.print("O que queres fazer?" + "\n" + "Escrever(W)|Ver(R)|Sair(Q): ");
-        char operation = input.next().charAt(0);
-        // input.close();
-        if (operation=='Q')
-            quit();
-        else if (operation=='R')
-            read();
-            // Perfil perfil = new Perfil(nome, id, texto);
-            // System.out.print("O teu texto é: " +perfil.Paginas[0].Mensagens[0].texto);
-            // System.out.println();
+    public static void command(String command){
+        
+        // if (input.hasNext()){
+            
+        // String command = input.next().toString().toLowerCase();
+        switch (command){
+            case "help":
+                System.out.println("help quit");
+                break;
+            case "quit":
+                keepGoing=false;
+                break;
+            default:
+                System.out.println("Command not recognized. Type 'help' for available commands.");
+                // input.next();
+        }
+        // }
+    }
 
-            // printArr(perfil.getAliases());
-            // perfil.addAlias("NotJoão.");
-            // printArr(perfil.getAliases());
-        else if (operation=='W')
-            write();
-            // System.out.println("Cria o primeiro perfil.");
-            // System.out.print("Introduz o nome do perfil: ");
-            // input.nextLine();
-            // // Scanner scNome = new Scanner(System.in);
-            // // input.useDelimiter("");
-            // String nome = input.nextLine();
-            // System.out.print("Introduz o id da mensagem(TEMP): ");
-            // int id = input.nextInt();
-            // System.out.print("Introduz o texto da mensagem: ");
-            // input.useDelimiter("__END__");
-            // input.nextLine();
-            // String texto = input.next();
-            // input.close();
-        else
-            operation();
-        input.close();
-    }
-    
-    public static void read(){
-        System.out.println("Read mode.");
-    }
-    public static void write(){
-        System.out.println("Write mode.");
-    }
-    public static void quit(){
-        System.out.println("Quit mode.");
-    }
-    static void printArr(String[] stringArr){
-        for (String i : stringArr)
-            System.out.print('"' + i + '"');
-    }
 }
