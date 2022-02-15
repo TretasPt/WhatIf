@@ -8,4 +8,12 @@ public class Mensagem {
         date =System.currentTimeMillis();
         this.texto = texto;
     }
+
+    int getSize(){
+        int size = 0;
+        size += Utils.getSize(id);
+        size += Utils.getSize(date);
+        size += Utils.getSize(texto);
+        return size;
+    }
 }

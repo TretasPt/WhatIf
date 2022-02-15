@@ -15,6 +15,17 @@ public class Perfil {
         Paginas = new Pagina[1];
     }
 
+    int getSize(){
+        int size =0;
+        for (int i=0; i!=Paginas.length;i++){
+            size += Paginas[i].getSize();
+        }
+        for (int i = 0; i!= nomes.length;i++){
+            size += Utils.getSize(nomes[i]);
+        }
+        return size;
+    }
+
     String[] getAliases(){
         return nomes;
     }

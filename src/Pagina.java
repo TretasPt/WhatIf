@@ -1,5 +1,6 @@
 public class Pagina {
     Mensagem[] Mensagens;
+    Ficheiro[] Fixeiros;
 
     Pagina(){}
 
@@ -16,6 +17,17 @@ public class Pagina {
         }
         tempMensagens[tempMensagens.length-1]= new Mensagem(id, texto);
         Mensagens = tempMensagens;
+    }
+
+    int getSize(){
+        int size = 0;
+        for (int i = 0; i != Mensagens.length; i++){
+            size += Mensagens[i].getSize();
+        }
+        for (int i = 0; i != Fixeiros.length; i++){
+            size += Fixeiros[i].getSize();
+        }
+        return size;
     }
 
     int getNOfMessages(){

@@ -1,77 +1,68 @@
-import java.util.Scanner;
-// import java.io.IOException;
-// import java.nio.file.*;
-// import java.nio.charset.StandardCharsets;
+import java.util.Scanner;    
 
 public class App {
-
-    // public static void main(String[] args) {
-
-    //     Scanner input = new Scanner(System.in);
-    //     input.useDelimiter("__END__");
-    //     System.out.print("Enter your name: ");
-    //     String name = input.next();
-    //     System.out.println(name);
-    //     input.close();
-    //   }
+    private static int maxId;
+    private static Perfil[] perfies;
 
     public static void main(String[] args) {
-        System.out.print("O que queres fazer?(Escrever(W)|Ver e Editar(E)): ");
+        operation();
+
+    }
+
+    public static void lock(){
+        int size = 0;
+        for (int i = 0; i != perfies.length; i++){
+            size += perfies[i].getSize();
+        }
+    }
+
+    public static void operation(){
         Scanner input = new Scanner(System.in);
+        System.out.print("O que queres fazer?" + "\n" + "Escrever(W)|Ver(R)|Sair(Q): ");
         char operation = input.next().charAt(0);
         // input.close();
-        System.out.println(operation);
+        if (operation=='Q')
+            quit();
+        else if (operation=='R')
+            read();
+            // Perfil perfil = new Perfil(nome, id, texto);
+            // System.out.print("O teu texto é: " +perfil.Paginas[0].Mensagens[0].texto);
+            // System.out.println();
 
-        System.out.println("Cria o primeiro perfil.");
-        System.out.print("Introduz o nome do perfil: ");
-        input.nextLine();
-        // Scanner scNome = new Scanner(System.in);
-        // input.useDelimiter("");
-        String nome = input.nextLine();
-        System.out.print("Introduz o id da mensagem(TEMP): ");
-        int id = input.nextInt();
-        System.out.print("Introduz o texto da mensagem: ");
-        input.useDelimiter("__END__");
-        input.nextLine();
-        String texto = input.next();
+            // printArr(perfil.getAliases());
+            // perfil.addAlias("NotJoão.");
+            // printArr(perfil.getAliases());
+        else if (operation=='W')
+            write();
+            // System.out.println("Cria o primeiro perfil.");
+            // System.out.print("Introduz o nome do perfil: ");
+            // input.nextLine();
+            // // Scanner scNome = new Scanner(System.in);
+            // // input.useDelimiter("");
+            // String nome = input.nextLine();
+            // System.out.print("Introduz o id da mensagem(TEMP): ");
+            // int id = input.nextInt();
+            // System.out.print("Introduz o texto da mensagem: ");
+            // input.useDelimiter("__END__");
+            // input.nextLine();
+            // String texto = input.next();
+            // input.close();
+        else
+            operation();
         input.close();
-
-
-
-        Perfil perfil = new Perfil(nome, id, texto);
-        System.out.print("O teu texto é: " +perfil.Paginas[0].Mensagens[0].texto);
-        System.out.println();
-
-        printArr(perfil.getAliases());
-        perfil.addAlias("NotJoão.");
-        printArr(perfil.getAliases());
     }
-
-    // public static void main(String[] args) throws IOException
-    // // throws InterruptedException 
-    // {
-    //     test();
-    // }
     
-
+    public static void read(){
+        System.out.println("Read mode.");
+    }
+    public static void write(){
+        System.out.println("Write mode.");
+    }
+    public static void quit(){
+        System.out.println("Quit mode.");
+    }
     static void printArr(String[] stringArr){
         for (String i : stringArr)
-            System.out.println(i);
+            System.out.print('"' + i + '"');
     }
-
-    // static void testTime()throws InterruptedException {
-    //     System.out.println("Test working so far.");
-    //     Thread.sleep(3000);
-    //     System.out.println("Test 3 sec later.");
-    // }
-
-    // static void test() throws IOException{
-    //     Path path = Paths.get("C:/MultiUser/JAVA/WhatIf/Ideias/ideas.txt");
-    //     byte[] data = Files.readAllBytes(path);
-    //     // String s = new String(data, StandardCharsets.UTF_8);
-    //     // System.out.print(s);
-    //     String s = Base64.getEncoder().encodeToString(bytes);
-    //     System.out.println(s);
-    //     byte[] decode = Base64.getDecoder().decode(s);
-    //  }
 }
