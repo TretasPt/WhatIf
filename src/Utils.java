@@ -13,4 +13,20 @@ public class Utils {
         return 8;//bytes
         //return 64;//bits
     }
+
+    static boolean isNull(Perfil[] perfies){
+        return (perfies==null);
+    }
+    static boolean isFull(Perfil[] perfies){
+        if (isNull(perfies))
+            return true;
+        return perfies[perfies.length-1]!=null;
+    }
+    static int firstFree(Perfil[] perfies){
+        for (int i = 0; i!= perfies.length; i++){
+            if (perfies[i]==null)
+                return i;
+        }
+        throw new IllegalStateException("Tentou encontrar a primeira vaga num vetor completo.");
+    }
 }

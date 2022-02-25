@@ -22,11 +22,16 @@ public class Pagina {
 
     int getSize(){
         int size = 0;
-        for (int i = 0; i != Mensagens.length; i++){
-            size += Mensagens[i].getSize();
+        if (Mensagens!=null){
+            for (int i = 0; i != Mensagens.length; i++){
+                size += Mensagens[i].getSize();
+            }
         }
-        for (int i = 0; i != Fixeiros.length; i++){
-            size += Fixeiros[i].getSize();
+        if (Fixeiros!=null){
+            for (int i = 0; i != Fixeiros.length; i++){
+                size += Fixeiros[i].getSize();
+            }
+        size += Utils.getSize(id);
         }
         return size;
     }

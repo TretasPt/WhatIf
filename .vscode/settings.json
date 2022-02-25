@@ -1,5 +1,10 @@
 {
     "java.project.sourcePaths": ["src"],
     "java.project.outputPath": "bin",
-    "maven.terminal.useJavaHome": true
+    "maven.terminal.useJavaHome": true,
+    "sshfs.configs": [
+        {
+            "name": "tigre"
+        }
+    ]
 }

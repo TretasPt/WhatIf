@@ -14,6 +14,7 @@ public class Ficheiro {
 
     int getSize(){
         int size = 0;
+        size += Utils.getSize(id);
         size += Utils.getSize(nome);
         size += Utils.getSize(path.toString());
         File ficheiro = path.toFile();
