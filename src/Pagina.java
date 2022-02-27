@@ -1,9 +1,11 @@
 public class Pagina {
-    Mensagem[] Mensagens;
-    Ficheiro[] Fixeiros;
-    int id;
+    private Mensagem[] Mensagens;
+    private Ficheiro[] Ficheiros;
+    private int id;
 
-    Pagina(){}
+    Pagina(int id){
+        this.id =id;
+    }
 
     void addMessage (int id, String texto){
         Mensagem[] tempMensagens;
@@ -27,20 +29,42 @@ public class Pagina {
                 size += Mensagens[i].getSize();
             }
         }
-        if (Fixeiros!=null){
-            for (int i = 0; i != Fixeiros.length; i++){
-                size += Fixeiros[i].getSize();
+        if (Ficheiros!=null){
+            for (int i = 0; i != Ficheiros.length; i++){
+                size += Ficheiros[i].getSize();
             }
         size += Utils.getSize(id);
         }
         return size;
     }
-
     int getNOfMessages(){
         if (Mensagens==null) {
             return 0;
         }else{
             return Mensagens.length;
         }
+    }
+    int getId(){
+        return id;
+    }
+    String[][] tree(){
+        String[][] treeData = new String[3][];
+        String[] ficheiros = new String[Ficheiros.length];
+        String[] mensagens = new String[Mensagens.length];
+        String[] ids = new String[Ficheiros.length + Mensagens.length];
+        // ids[ids.length-1]= String.valueOf(id);
+        for (int i = 0; i!= Ficheiros.length; i++){
+            ficheiros[i] = Ficheiros[i].getNome();
+            ids[i] = String.valueOf(Ficheiros[i].getId());
+        }
+        for (int i = 0; i!= Mensagens.length; i++){
+            mensagens[i] = String.valueOf(Mensagens[i].getDate());
+            ids[i+Ficheiros.length] = String.valueOf(Mensagens[i].getId());
+        }
+        treeData[0] = mensagens;
+        treeData[1] = ficheiros;
+        treeData[2] = ids;
+    
+        return treeData;
     }
 }
