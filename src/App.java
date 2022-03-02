@@ -72,7 +72,7 @@ public class App {
                     getSize();
                     break;
             case "tree":
-                    printTree();
+                    tree();
                     break;
             default:
                 print("Command not recognized. Type 'help' for available commands.");
@@ -84,12 +84,11 @@ public class App {
 
         try {
             ps = new PrintStream(System.out, true, "iso-8859-1");
-            } catch (UnsupportedEncodingException error) {
+        } catch (UnsupportedEncodingException error) {
             System.err.println(error);
             System.exit(0);
-            }
-            ps.println(textOutputColor + texto + textColorReset);
-
+        }
+        ps.println(textOutputColor + texto + textColorReset);
     }
 
     public static void lock(){
@@ -153,58 +152,16 @@ public class App {
             return sum;
     }
 
-    public static void printTree(){
-        //id-perfies
-            //nomes
-            //id-paginas
-                //id-mensagens
-                //id-ficheiros
-        String[][][][][][] treeStructure = tree();
-        for (int i = 0 ; i!= treeStructure[0].length ; i++){
-            //printProfile(treeStructure[1][0][0][0][0][i]);
-            if (treeStructure[1][0][0][0][0][i] != null)
-                print(treeStructure[0][0][0][0][0][i] + " | " + treeStructure[1][0][0][0][0][i]);
-        }
-    }
-    public static String[][][][][][] tree(){
-        String[][][][][][] treeData = new String[2][][][][][];
-        String[][][][][] perfil;
-        String[][][][][] ids;
-
-        if (perfies == null){
-            String empty = "Empty.";
-            perfil = new String[1][1][1][1][1];
-            perfil[0][0][0][0][0] = empty;
-            ids = new String[1][1][1][1][1];
-            ids[0][0][0][0][0] = empty;
-        }else{
-            perfil = new String[perfies.length][][][][];
-            ids = new String[1][1][1][1][perfies.length];
-            for (int i = 0; i!= perfies.length; i++){
-                perfil[i] = perfies[i].tree();
-                ids[0][0][0][0][i] = String.valueOf(perfies[i].getId());
+    public static void tree(){
+        print("maxId: " + String.valueOf(maxId));
+        if (perfies != null){
+            for ( int i = 0 ; i != perfies.length ; i ++){
+                print(String.valueOf(perfies[i].getId()));
+                perfies[i].tree();
             }
+        }else{
+            print(String.format("There are no profiles."));
         }
-        treeData[0] = perfil;
-        treeData[1] = ids;
-        return treeData;
     }
 
-    // public static String[][][][][][] tree(){
-    //     String[][][][][][] treeData = new String[2][][][][][];
-    //     if (perfies == null){
-    //         String[][][][][] perfil = new String[1][][][][];
-    //         String[][][][][] ids = new String[1][1][1][1][perfies.length];
-    //     }else{
-    //         String[][][][][] perfil = new String[perfies.length][][][][];
-    //         String[][][][][] ids = new String[1][1][1][1][perfies.length];
-    //         for (int i = 0; i!= perfies.length; i++){
-    //             perfil[i] = perfies[i].tree();
-    //             ids[0][0][0][0][i] = String.valueOf(perfies[i].getId());
-    //         }
-    //     }
-    //     treeData[0] = perfil;
-    //     treeData[1] = ids; 
-    //     return treeData;  
-    // }
 }

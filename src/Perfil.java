@@ -59,33 +59,17 @@ public class Perfil {
         nomes=tempNomes;
     }
 
-    String[][][][] tree(){
-        String[][][][] treeData = new String[3][][][];
-        String[][][] paginas; 
-        String[][][] names = new String[1][1][nomes.length];
-        String[][][] ids;
+    void tree(){
+        for(int i = 0; i!= nomes.length; i++){
+            System.out.print("   " + nomes[i] + "   |");
+        }
+        System.out.println();
 
-        if (Paginas == null){
-            String empty = "Empty.";
-            paginas = new String[1][1][1];
-            ids = new String[1][1][1];
-            paginas[0][0][0]=empty;
-            ids[0][0][0]=empty;
-        }else{
-            paginas = new String[Paginas.length][][];
-            ids = new String[1][1][Paginas.length];
-            for (int i = 0; i!= Paginas.length;i++){
-                paginas[i] = Paginas[i].tree();
-                ids[0][0][i] = String.valueOf(Paginas[i].getId());
+        if (Paginas != null){
+            for (int i = 0; i != Paginas.length; i++){
+                App.print(String.format("   " , Paginas[i].getId()));
+                Paginas[i].tree();
             }
         }
-            for (int i = 0; i!= nomes.length; i++){
-                names[0][0][i] = nomes[i];
-            }
-        
-        treeData[0] = paginas;
-        treeData[1] = names;
-        treeData[2] = ids;
-        return treeData;
     }
 }
