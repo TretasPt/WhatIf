@@ -3,13 +3,14 @@ import java.nio.file.Path;
 import java.io.File;
 
 public class Ficheiro {
-    String nome;
-    Path path;
-    int id;
+    private String nome;
+    private Path path;
+    private int id;
 
-    Ficheiro(String nome, Path path){
-        nome = this.nome;
-        path=this.path;
+    Ficheiro(int id, String nome, Path path){
+        this.id = id;
+        this.nome = nome;
+        this.path = path;
     }
 
     int getSize(){
@@ -20,5 +21,11 @@ public class Ficheiro {
         File ficheiro = path.toFile();
         size += ficheiro.getTotalSpace();
         return size;
+    }
+    int getId(){
+        return id;
+    }
+    String getNome(){
+        return nome;
     }
 }

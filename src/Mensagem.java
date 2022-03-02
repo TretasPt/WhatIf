@@ -1,12 +1,12 @@
 public class Mensagem {
-    int id;
-    long date;
-    String texto;
+    private int id;
+    private long date;
+    private String texto;
 
     Mensagem (int id,String texto){
         this.id = id;
-        date =System.currentTimeMillis();
         this.texto = texto;
+        date =System.currentTimeMillis();
     }
 
     int getSize(){
@@ -15,5 +15,11 @@ public class Mensagem {
         size += Utils.getSize(date);
         size += Utils.getSize(texto);
         return size;
+    }
+    int getId(){
+        return id;
+    }
+    long getDate(){
+        return date;
     }
 }

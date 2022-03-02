@@ -1,9 +1,11 @@
 public class Pagina {
-    Mensagem[] Mensagens;
-    Ficheiro[] Fixeiros;
-    int id;
+    private Mensagem[] Mensagens;
+    private Ficheiro[] Ficheiros;
+    private int id;
 
-    Pagina(){}
+    Pagina(int id){
+        this.id =id;
+    }
 
     void addMessage (int id, String texto){
         Mensagem[] tempMensagens;
@@ -27,20 +29,34 @@ public class Pagina {
                 size += Mensagens[i].getSize();
             }
         }
-        if (Fixeiros!=null){
-            for (int i = 0; i != Fixeiros.length; i++){
-                size += Fixeiros[i].getSize();
+        if (Ficheiros!=null){
+            for (int i = 0; i != Ficheiros.length; i++){
+                size += Ficheiros[i].getSize();
             }
         size += Utils.getSize(id);
         }
         return size;
     }
-
     int getNOfMessages(){
         if (Mensagens==null) {
             return 0;
         }else{
             return Mensagens.length;
+        }
+    }
+    int getId(){
+        return id;
+    }
+    void tree(){
+        if (Mensagens != null){
+            for (int i = 0; i!= Mensagens.length; i++){
+                App.print(String.format("       " , Mensagens[i].getId() , Mensagens[i].getDate()));
+            }
+        }
+        if (Ficheiros != null){
+            for (int i = 0; i!= Ficheiros.length; i++){
+                App.print(String.format("       " , Ficheiros[i].getId() , Ficheiros[i].getNome()));
+            }
         }
     }
 }

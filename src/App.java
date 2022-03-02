@@ -10,12 +10,12 @@ public class App {
     private static boolean keepGoing = true;
     // private static Path path;
 
-    public static final String ANSI_RESET = "\u001B[0m";
-    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String textColorReset = "\u001B[0m";
+    public static final String textOutputColor = "\u001B[34m";
 
     public static void main(String[] args) {
         // path = Paths.get("ROOT");
-        print(ANSI_BLUE + "Type 'help' for a list of commands." + ANSI_RESET);
+        print("Type 'help' for a list of commands.");
         Scanner input = new Scanner(System.in);
         while(keepGoing){
             // operation();
@@ -29,7 +29,7 @@ public class App {
         String[] arguments = command.split(" ");
         switch (arguments[0].toLowerCase()){
             case "help":
-                print(ANSI_BLUE + "help\nquit\nprint\nlock\nnewprofile\nclear" + ANSI_RESET);
+                print("help\nquit\nprint\nlock\nnewprofile\nclear");
                 break;
             case "quit":
                 keepGoing=false;
@@ -41,7 +41,7 @@ public class App {
                     toPrint += " " + arguments[i];
                 }
                 // System.out.println(ANSI_BLUE + toPrint + ANSI_RESET);
-                print(ANSI_BLUE + toPrint + ANSI_RESET);
+                print(toPrint);
 
                 break;
             case "lock":
@@ -49,7 +49,7 @@ public class App {
                 break;
             case "newprofile":
                 if (arguments.length==1)
-                    print(ANSI_BLUE + "Sintaxe:\n \"newprofile <profilename>\"\n <pofilename> - Uma palavra ou frase. (String). " + ANSI_RESET);
+                    print("Sintaxe:\n \"newprofile <profilename>\"\n <pofilename> - Uma palavra ou frase. (String). ");
                 else{
                     String nome = "";
                     for (int i = 1; i != arguments.length; i++){
@@ -71,8 +71,11 @@ public class App {
             case "getsize":
                     getSize();
                     break;
+            case "tree":
+                    tree();
+                    break;
             default:
-                print(ANSI_BLUE + "Command not recognized. Type 'help' for available commands." + ANSI_RESET);
+                print("Command not recognized. Type 'help' for available commands.");
         }
     }
 
@@ -81,12 +84,11 @@ public class App {
 
         try {
             ps = new PrintStream(System.out, true, "iso-8859-1");
-            } catch (UnsupportedEncodingException error) {
+        } catch (UnsupportedEncodingException error) {
             System.err.println(error);
             System.exit(0);
-            }
-            ps.println(texto);
-
+        }
+        ps.println(textOutputColor + texto + textColorReset);
     }
 
     public static void lock(){
@@ -99,16 +101,16 @@ public class App {
             for (int i = 0; i != perfies.length; i++){
                 size += perfies[i].getSize();
             }
-            print(ANSI_BLUE + "Este commando ainda não está concluido. Aqui tens o tamanho dos conteudos existentes:" + String.valueOf(size) + "Bytes." + ANSI_RESET);
+            print("Este commando ainda não está concluido. Aqui tens o tamanho dos conteudos existentes:" + String.valueOf(size) + "Bytes.");
         }else{
-            print(ANSI_BLUE + "Não existem perfies." + ANSI_RESET);
+            print("Não existem perfies.");
         }
         return size;
     }
 
     public static void listProfiles(){
         if (Utils.isNull(perfies)){
-            print(ANSI_BLUE + "Não exstem perfies." + ANSI_RESET);
+            print("Não exstem perfies.");
         }else{
             String lsPerfies = "Id:" + perfies[0].getId() + "       " + perfies[0].getName();
             if (perfies.length!=1){
@@ -116,7 +118,7 @@ public class App {
                     lsPerfies += "\nId:" + perfies[i].getId() + "       " + perfies[i].getName();
                 }
             }
-            print(ANSI_BLUE + lsPerfies + ANSI_RESET);
+            print(lsPerfies);
         }
     }
 
@@ -148,6 +150,18 @@ public class App {
             }
         }
             return sum;
+    }
+
+    public static void tree(){
+        print("maxId: " + String.valueOf(maxId));
+        if (perfies != null){
+            for ( int i = 0 ; i != perfies.length ; i ++){
+                print(String.valueOf(perfies[i].getId()));
+                perfies[i].tree();
+            }
+        }else{
+            print(String.format("There are no profiles."));
+        }
     }
 
 }

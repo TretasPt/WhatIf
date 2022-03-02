@@ -1,15 +1,15 @@
 public class Perfil {
-    Pagina[] Paginas;
-    String[] nomes;
-    int id;
+    private Pagina[] Paginas;
+    private String[] nomes;
+    private int id;
 
-    Perfil(String nome, int id, String texto){
-        nomes = new String[1];
-        nomes[0] = nome;
-        Paginas = new Pagina[1];
-        Paginas[0] = new Pagina();
-        Paginas[0].addMessage(id, texto);
-    }
+    // Perfil(String nome, int id, String texto){
+    //     nomes = new String[1];
+    //     nomes[0] = nome;
+    //     Paginas = new Pagina[1];
+    //     Paginas[0] = new Pagina();
+    //     Paginas[0].addMessage(id, texto);
+    // }
     Perfil(String nome, int id){
         this.id= id;
         nomes = new String[1];
@@ -30,7 +30,6 @@ public class Perfil {
         size += Utils.getSize(id);
         return size;
     }
-
     String[] getAliases(){
         return nomes;
     }
@@ -44,7 +43,6 @@ public class Perfil {
         }
         return Messages;
     }
-
     int getId(){
         return id;
     }
@@ -59,5 +57,19 @@ public class Perfil {
         }
         tempNomes[nomes.length]= nome;
         nomes=tempNomes;
+    }
+
+    void tree(){
+        for(int i = 0; i!= nomes.length; i++){
+            System.out.print("   " + nomes[i] + "   |");
+        }
+        System.out.println();
+
+        if (Paginas != null){
+            for (int i = 0; i != Paginas.length; i++){
+                App.print(String.format("   " , Paginas[i].getId()));
+                Paginas[i].tree();
+            }
+        }
     }
 }
