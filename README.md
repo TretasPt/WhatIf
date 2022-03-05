@@ -29,8 +29,8 @@ Criar um programa com as funções basicas descritas em WhatIf e posteriormente 
 Estruturar e guardar informação, formando algo semelhante a um diario ou um logbook.
 
 Tipos de informação aceite:
--texto;
--ficheiros externos.
+- texto;
+- ficheiros externos.
 
 Os dados podem ser armazenados numa estrotura de dados simples que agrega todas os dados(Incluindo os ficheiros externos). Estes dados podem posteriormente ser alterados atravez de uma fução inversivel de modo a "encriptá-los" com uma "palavra passe".
 
@@ -58,8 +58,8 @@ Creating a program that has the basic functionalities described in WhatIf and la
 Store and organize informations in a format similar to a diary or a logbook.
 
 Types of information suported:
--text;
--external files.
+- text;
+- external files.
 
 The information can be stored in a simple strocture that joins all files and information into a new file(this includes external files). This information in the new filetype can then be changed through an inversible function "encripting" it with a "password".
 
