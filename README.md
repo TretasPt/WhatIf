@@ -1,23 +1,16 @@
-<!--
-## Getting Started
+# Archival notice / Aviso de arquivamento do projeto
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+This project is going to be archived now. Four years ago, I was overconfident in my technical knowledge and my free time availability. For those reasons, the project was quickly abandoned.
 
-## Folder Structure
+Although this version was abandoned, I revisited the idea some years later under a new name, [FrienDB](https://github.com/TretasPt/FrienDB). This new start helped me actually make progress without the pressure of the perfection I envisioned for the "WhatIf" project.
 
-The workspace contains two folders by default, where:
+------
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+Este projeto vai ser arquivado agora. Há quatro anos, estava excessivamente confiante nos meus conhecimentos técnicos e na minha disponibilidade de tempo livre. Por essas razões, o projeto foi rapidamente abandonado.
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+Embora esta versão tenha sido deixada de lado, revisitei a ideia alguns anos mais tarde sob um novo nome, [FrienDB](https://github.com/TretasPt/FrienDB). Este novo nome ajudou-me a progredir efetivamente, sem a pressão da perfeição que tinha idealizado para o projeto "WhatIf".
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
 
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
--->
 # Português
 
 ## Objetivos
